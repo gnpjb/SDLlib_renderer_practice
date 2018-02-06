@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void G_ErrorLog(string Operation,ostream Stream){
+void G_ErrorLog(string Operation,ostream& Stream){
 	
 	Stream<<Operation<<": "<<SDL_GetError()<<endl;
 	
