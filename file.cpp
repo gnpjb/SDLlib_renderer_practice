@@ -12,7 +12,7 @@ void G_ErrorLog(string Operation,ostream& Stream){
 }
 
 int main(int argc,char** args){
-	
+	//setup
 	if(SDL_Init(SDL_INIT_EVERYTHING)!=0){
 		G_ErrorLog("SDL_Init()",cout);
 		return 3;
@@ -52,6 +52,11 @@ int main(int argc,char** args){
 	}
 	
 	
+	string InputText="";
+	
+	
+	
+	//event handler
 	SDL_Event Event;
 	while(true){
 		if(!SDL_PollEvent(&Event)){
@@ -61,7 +66,12 @@ int main(int argc,char** args){
 		if(Event.type==SDL_QUIT){
 			break;
 		}
+		if(Event.type==SDL_TEXTINPUT){
+			InputText.append(Event.text.text);
+			continue;
+		}
 	}
+	cout<<InputText<<endl;
 	return 0;
 	
 }
