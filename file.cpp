@@ -11,6 +11,26 @@ void G_ErrorLog(string Operation,ostream& Stream){
 	
 }
 
+void G_RenderCubePBP(SDL_Renderer* Renderer){//render cube point by point
+	Uint8 Red;
+	Uint8 Blue;
+	Uint8 Green;
+	Uint8 Alfa;
+	SDL_GetRenderDrawColor(Renderer,&Red,&Green,&Blue,&Alfa);
+	SDL_SetRenderDrawColor(Renderer,100,100,100,255);
+	for(int j=0;j<200;j++){
+		for(int i=0;i<200;i++){	
+			SDL_RenderDrawPoint(
+				Renderer,
+				i,
+				j
+			);
+			SDL_RenderPresent(Renderer);
+		}
+	}
+	SDL_SetRenderDrawColor(Renderer,Red,Green,Blue,Alfa);
+}
+
 int main(int argc,char** args){
 	//setup
 	if(SDL_Init(SDL_INIT_EVERYTHING)!=0){
